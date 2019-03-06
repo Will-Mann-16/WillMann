@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Will Mann',
-    meta: 'Computing Student',
-    description: 'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
+    meta: 'Web Developer',
+    description: 'Will Mann is a full stack web developer, who can develop a variety of projects',
     author: 'Will Mann',
     footer: 'Will Mann is a computing student who developed this project.'
   },
@@ -16,7 +16,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Will Mann',
-        short_name: 'starter',
+        short_name: 'willmann',
         start_url: '/',
         background_color: '#192a56',
         theme_color: '#192a56',

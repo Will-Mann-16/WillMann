@@ -21,6 +21,7 @@ const Wrapper = styled.div`
         "main main"
         "footer footer";
     }
+    grid-auto-rows: auto 1fr auto;
     height: 100vh;
 `;
 

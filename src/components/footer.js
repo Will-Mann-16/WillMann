@@ -9,9 +9,18 @@ const FooterWrapper = styled.footer`
   color: #dcdde1;
   font-size: 0.5rem;
 `;
+const CenterFlex = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+`;
 
 const Footer = ({ siteFooter }) => (
   <FooterWrapper>
+    <CenterFlex>
+
+    </CenterFlex>
     <span>{siteFooter}</span>
   </FooterWrapper>
 )

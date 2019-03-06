@@ -133,9 +133,6 @@ const Header = ({ siteTitle, siteMeta }) => (
         </Hamburger>
       </HeaderWrapper>
             <NavWrapper height={on ? 'auto' : 0}>
-              <Link activeClassName="active" to="/">Home</Link>
-              <Link activeClassName="active" to="/about">About</Link>
-              <Link activeClassName="active" to="/projects">Projects</Link>
             </NavWrapper>
   </>
           )}
