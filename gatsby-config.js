@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://www.willmann.me.uk',
     title: 'Will Mann',
     meta: 'Full Stack Web Developer',
     description: 'Will Mann is a full stack web developer, who can develop a variety of projects',
