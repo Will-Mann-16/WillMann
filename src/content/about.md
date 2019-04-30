@@ -1,5 +1,6 @@
 ---
 title: About
+templateKey: about-page
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere eu purus eget tincidunt. Pellentesque sollicitudin porttitor convallis. Aliquam porttitor, quam in vulputate tempus, arcu ligula venenatis tortor, sit amet volutpat ipsum diam at elit. Pellentesque tempus molestie dolor ut mollis. Nullam faucibus ex a auctor pharetra. In iaculis pellentesque orci fermentum pellentesque. Sed sit amet nisl at mauris viverra bibendum. Integer a consectetur nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 

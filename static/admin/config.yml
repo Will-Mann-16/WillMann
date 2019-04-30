@@ -1,7 +1,7 @@
 backend:
   name: github
   branch: master
-  repo: Will-Mann-16/PersonalWebsite
+  repo: Will-Mann-16/WillMann
 
 media_folder: static/img
 public_folder: /img
@@ -10,16 +10,26 @@ collections:
   - name: 'pages'
     label: 'Pages'
     files: 
+      - name: 'home'
+        label: 'Home'
+        file: 'src/content/index.md'
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
+          - { label: 'Title', name: 'title', widget: 'string'}
+          - { label: 'Content', name: 'content', widget: 'markdown' }
       - name: 'about'
         label: 'About'
         file: 'src/content/about.md'
         fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+          - { label: 'Title', name: 'title', widget: 'string'}
           - { label: 'Content', name: 'content', widget: 'markdown' }
       - name: 'projects'
         label: 'Projects'
         file: 'src/content/projects.md'
         fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "projects-page"}
+          - { label: 'Title', name: 'title', widget: 'string'}
           - label: 'Projects'
             name: 'Projects'
             widget: 'list'

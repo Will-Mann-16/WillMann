@@ -1,4 +1,4 @@
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { Link, graphql, StaticQuery, navigate } from 'gatsby'
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -6,11 +6,11 @@ import styled from 'styled-components';
 import { Spring } from 'react-spring';
 import { Toggle } from 'react-powerplug';
 
-
 const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  cursor: pointer;
 `;
 
 const HeaderContainer = styled.div`
@@ -42,13 +42,14 @@ const NavWrapper = styled.nav`
   grid-area: nav;
   overflow: hidden;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   background-color: #192a56;
   flex-direction: row;
   align-items: center;
   @media (max-width: 768px){
     flex-direction: column;
-    height: ${({height}) => height}
+    justify-content: flex-start;
+    height: ${({height}) => height};
   }
   .active:after{
     transform: scaleX(1);
@@ -115,7 +116,7 @@ const Header = ({ siteTitle, siteMeta }) => (
   {({on, toggle}) => (
     <>
     <HeaderWrapper>
-      <Flex>
+      <Flex onClick={() => navigate('/')}>
       <Thumbnail fluid={data.file.childImageSharp.fluid} />
       <HeaderContainer>
       <h1 style={{ margin: 0 }}>
@@ -133,6 +134,9 @@ const Header = ({ siteTitle, siteMeta }) => (
         </Hamburger>
       </HeaderWrapper>
             <NavWrapper height={on ? 'auto' : 0}>
+              <Link to="">Home</Link>
+              <Link to="about">About</Link>
+              <Link to="contact">Contact</Link>
             </NavWrapper>
   </>
           )}

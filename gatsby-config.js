@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: 'Will Mann',
-    meta: 'Web Developer',
+    meta: 'Full Stack Web Developer',
     description: 'Will Mann is a full stack web developer, who can develop a variety of projects',
     author: 'Will Mann',
-    footer: 'Will Mann is a computing student who developed this project.'
+    footer: 'Will Mann is a computing student who developed this website as a showcase of his skills.'
   },
   plugins: [
     'gatsby-plugin-sitemap',
