@@ -1,4 +1,5 @@
 ---
+templateKey: projects-page
 title: Projects
 projects:
   - completed: true
