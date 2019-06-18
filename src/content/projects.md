@@ -1,6 +1,6 @@
 ---
 title: Projects
-Projects:
+projects:
   - completed: true
     description: >-
       myWelly was by far my most successful project during my time at
