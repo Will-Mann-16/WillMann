@@ -23,7 +23,7 @@ const Thumbnail = styled.img`
   width: 100%;
 `;
 
-const Completed = styled.p`
+const Completed = styled.span`
   color: ${({completed}) => completed ? '#4cd137' : '#e74c3c'};
   font-weight: bold;
 `;
@@ -32,6 +32,18 @@ const ProjectGroup = styled.div`
   display: grid;
   grid-auto-columns: max-content;
   grid-gap: 10px;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 10px 0;
+`;
+
+const Language = styled.span`
+  color: #95a5a6;
 `;
 
 const ProjectsPage = ({data}) => (
@@ -44,8 +56,9 @@ const ProjectsPage = ({data}) => (
     <Thumbnail src={project.thumbnail}/>
     <div>
     <h3>{project.title}</h3>
-    <p>{project.description}</p>
-    <Completed completed={project.completed}>{project.completed ? 'Completed' : 'Not completed'}</Completed>
+    <p style={{marginBottom: '0.5em'}}>{project.description}</p>
+    <Completed completed={project.completed}>{project.completed ? 'Complete' : 'Not complete'}</Completed>
+    <Flex>{project.languages.map((language, key) => <Language key={key}>{language}</Language>)}</Flex>
     </div>
     </Project>)}
     </ProjectGroup>
@@ -63,6 +76,7 @@ export const query = graphql`
           description
           thumbnail
           completed
+          languages
         }
       }
     }

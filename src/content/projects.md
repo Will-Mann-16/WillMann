@@ -15,7 +15,7 @@ projects:
       - NodeJS
       - MongoDB
       - AWS
-    thumbnail: /img/48023404731_9718e78e88_o.jpg
+    thumbnail: /assets/img/48023404731_9718e78e88_o.jpg
     title: myWelly
 ---
 The projects page contains all the active projects that I am working on:
