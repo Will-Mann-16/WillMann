@@ -3,7 +3,7 @@ backend:
   branch: master
   repo: Will-Mann-16/WillMann
 
-media_folder: static/img
+media_folder: static/assets/img
 public_folder: /img
 
 collections:
@@ -30,8 +30,9 @@ collections:
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "projects-page"}
           - { label: 'Title', name: 'title', widget: 'string'}
+          - { label: 'Content', name: 'content', widget: 'markdown'}
           - label: 'Projects'
-            name: 'Projects'
+            name: 'projects'
             widget: 'list'
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }

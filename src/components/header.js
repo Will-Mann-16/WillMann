@@ -1,10 +1,10 @@
-import { Link, graphql, StaticQuery, navigate } from 'gatsby'
+import { Link, graphql, useStaticQuery, navigate } from 'gatsby'
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components';
-import { Spring } from 'react-spring';
-import { Toggle } from 'react-powerplug';
+import { useSpring, animated } from 'react-spring';
+import { useMetadata, useToggle } from './hooks';
 
 const Flex = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
   grid-area: header;
-  background-color: #192a56;
+  ${({index}) => index ? 'background-image: linear-gradient(to top, rgba(25, 42, 86, 0), rgba(25, 42, 86, 1))' : 'background-color: #192a56' };
   h1{
     color: white;
     text-decoration: none;
@@ -38,12 +38,12 @@ justify-content: space-between;
   }
 `;
 
-const NavWrapper = styled.nav`
+const NavWrapper = styled(animated.div)`
   grid-area: nav;
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
-  background-color: #192a56;
+  ${({index}) => index ? 'background-image: linear-gradient(to top, rgba(25, 42, 86, 0), rgba(25, 42, 86, 1))' : 'background-color: #192a56' };
   flex-direction: row;
   align-items: center;
   @media (max-width: 768px){
@@ -96,34 +96,34 @@ const Hamburger = styled.div`
   }
 `;
 
-const Header = ({ siteTitle, siteMeta }) => (
-  <StaticQuery 
-    query={graphql`
-      query HeaderQuery {
-        file(relativePath: {
-          regex: "/Profile/"
-        }) {
-          childImageSharp {
-            fluid{
-              ...GatsbyImageSharpFluid
-            }
+const Header = ({index}) => {
+  const { title, meta } = useMetadata();
+  const [on, toggle] = useToggle();
+  const {height} = useSpring({height: on ? 'auto' : 0, from: {height: 0}});
+  const imageData = useStaticQuery(graphql`
+    query HeaderQuery {
+      file(relativePath: {
+        regex: "/Profile/"
+      }) {
+        childImageSharp {
+          fluid{
+            ...GatsbyImageSharpFluid
           }
         }
       }
-    `}
-      render={data => (
-  <Toggle>
-  {({on, toggle}) => (
+    }
+  `);
+  return (
     <>
-    <HeaderWrapper>
+    <HeaderWrapper index={index}>
       <Flex onClick={() => navigate('/')}>
-      <Thumbnail fluid={data.file.childImageSharp.fluid} />
-      <HeaderContainer>
+      <Thumbnail fluid={imageData.file.childImageSharp.fluid} />
+      <HeaderContainer index={index}>
       <h1 style={{ margin: 0 }}>
-          {siteTitle}
+          {title}
         </h1>
         <p style={{ margin: 0 }}>
-          {siteMeta}
+          {meta}
         </p>
         </HeaderContainer>
         </Flex>
@@ -133,26 +133,13 @@ const Header = ({ siteTitle, siteMeta }) => (
           <div></div>
         </Hamburger>
       </HeaderWrapper>
-            <NavWrapper height={on ? 'auto' : 0}>
+            <NavWrapper index={index} height={on ? 'auto' : 0}>
               <Link to="">Home</Link>
               <Link to="about">About</Link>
+              <Link to="projects">Projects</Link>
               <Link to="contact">Contact</Link>
             </NavWrapper>
-  </>
-          )}
-        </Toggle>
-      )}
-      />
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-  siteMeta: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: '',
-  siteMeta: ''
-}
+            </>
+)}
 
 export default Header

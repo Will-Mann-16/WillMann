@@ -8,6 +8,13 @@ module.exports = {
     footer: 'Will Mann is a computing student who developed this website as a showcase of his skills.'
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/static/assets`,
+      },
+    },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
@@ -40,7 +47,18 @@ module.exports = {
          path: `${__dirname}/src/content`,
        },
      },
-    'gatsby-transformer-remark',
+     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-relative-images`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {},
+          },
+        ],
+      },
+    },    
     'gatsby-plugin-netlify-cms',
     'gatsby-plugin-netlify'
   ],

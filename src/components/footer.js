@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { useMetadata } from './hooks';
 
 const FooterWrapper = styled.footer`
   grid-area: footer;
-  background-color: #192a56;
+  ${({index}) => index ? 'background-image: linear-gradient(to bottom, rgba(25, 42, 86, 0), rgba(25, 42, 86, 1))' : 'background-color: #192a56' };
   color: white;
   font-size: 0.5rem;
 `;
@@ -30,25 +31,18 @@ const Icon = styled.a`
   margin: 5px;
 `;
 
-const Footer = ({ siteFooter }) => (
-  <FooterWrapper>
+const Footer = ({ index }) => {
+  const { footer } = useMetadata();
+  return (
+  <FooterWrapper index={index}>
     <CenterFlex>
     <Icon href="mailto:will@willmann.me.uk"><FaEnvelope/></Icon>
       <Icon href="https://github.com/Will-Mann-16"><FaGithub/></Icon>
       <Icon href="https://www.linkedin.com/in/will-mann-265574156/"><FaLinkedin/></Icon>
     </CenterFlex>
     <CenterFlex>
-      <span>{siteFooter}</span>
+      <span>{footer}</span>
     </CenterFlex>
   </FooterWrapper>
-)
-
-Footer.propTypes = {
-  siteFooter: PropTypes.string,
-}
-
-Footer.defaultProps = {
-  siteFooter: '',
-}
-
+)}
 export default Footer

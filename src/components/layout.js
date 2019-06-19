@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
+import BackgroundImage from 'gatsby-background-image'
 import styled from 'styled-components'
+import { useSpring, animated } from 'react-spring';
 
 import Header from './header'
 import Footer from './footer';
@@ -23,12 +25,11 @@ const Wrapper = styled.div`
         "footer footer";
         grid-auto-rows: auto 1fr auto;
     }
-    height: 100vh;
+    min-height: 100vh;
 `;
 
 const Main = styled.main`
   grid-area: main;
-  background-color: #ecf0f1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -37,44 +38,52 @@ const Main = styled.main`
     justify-content: center;
     align-items: center;
     }
+    margin: 10px 0;
 `;
 
-const Container = styled.div`
+const Container = styled(animated.div)`
   margin: auto;
   max-width: 960px;
-  background-color: white;
+  background-color: ${({index}) => index ? 'rgba(39, 60, 117, 0.95)' : 'white'};
+  ${({index}) => index && 'color: white;'}
   border-radius: 10px;
   padding: 14px 24px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),
             0 2px 4px 0 rgba(0,0,0,0.08);
 `;
 
-const Layout = ({ children, location }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-            meta
-            footer
-          }
-        }
+const Layout = ({ children, location, index }) => {
+  const {file: imageFile} = useStaticQuery(graphql`
+  {
+  file(relativePath: {
+    regex: "/background/"
+  }) {
+    childImageSharp {
+      fluid{
+        ...GatsbyImageSharpFluid
       }
-    `}
-    render={data => (
+    }
+  }
+}
+  `);
+  const {opacity, y} = useSpring({opacity: 1, y: 0, from: {opacity: 0, y: -50}});
+ return (
+  <BackgroundImage fluid={imageFile.childImageSharp.fluid}>
       <Wrapper>
-        <Header siteTitle={data.site.siteMetadata.title} siteMeta={data.site.siteMetadata.meta} />
+        <Header index={index} />
         <Main>
-          <Container>
+          <Container index={index} style={index && 
+          ({
+            opacity,
+            transform: y.interpolate(y => `translate3d(0, ${y}px, 0)`)
+          })}>
           {children}
           </Container>
         </Main>
-        <Footer siteFooter={data.site.siteMetadata.footer} />
+        <Footer index={index} />
       </Wrapper>
-    )}
-  />
-)
+      </BackgroundImage>
+)}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
