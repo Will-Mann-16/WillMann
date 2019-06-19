@@ -4,7 +4,7 @@ backend:
   repo: Will-Mann-16/WillMann
 
 media_folder: static/assets/img
-public_folder: /img
+public_folder: /assets/img
 
 collections:
   - name: 'pages'
