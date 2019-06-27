@@ -30,7 +30,7 @@ const Completed = styled.span`
 
 const ProjectGroup = styled.div`
   display: grid;
-  grid-auto-columns: 1fr;
+  grid-auto-columns: auto-fit;
   grid-gap: 10px;
 `;
 
