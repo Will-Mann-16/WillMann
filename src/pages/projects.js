@@ -29,9 +29,10 @@ const Completed = styled.span`
 `;
 
 const ProjectGroup = styled.div`
-  display: grid;
-  grid-auto-columns: max-content;
-  grid-gap: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 `;
 
 const Flex = styled.div`
