@@ -31,6 +31,7 @@ const Completed = styled.span`
 const ProjectGroup = styled.div`
   display: grid;
   grid-auto-columns: 1fr;
+  grid-gap: 10px;
 `;
 
 const Flex = styled.div`
