@@ -24,7 +24,8 @@ projects:
       This website is a static website written in GatsbyJS and powered by
       NetlifyCMS with a YouTube widget to present his portfolio in a sleek
       minimalistic fashion. This website was my first client website, and I can
-      say that it was a success on all parts.
+      say that it was a success on all parts. Check it out here:
+      <https://www.foundry21.co.uk>
     languages:
       - GatsbyJS
       - ReactJS
