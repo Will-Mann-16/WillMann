@@ -29,10 +29,8 @@ const Completed = styled.span`
 `;
 
 const ProjectGroup = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-auto-columns: 1fr;
 `;
 
 const Flex = styled.div`
