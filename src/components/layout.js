@@ -52,7 +52,7 @@ const Container = styled(animated.div)`
             0 2px 4px 0 rgba(0,0,0,0.08);
 `;
 
-const Layout = ({ children, location, index }) => {
+const Layout = ({ children, location, index, style={} }) => {
   const {file: imageFile} = useStaticQuery(graphql`
   {
   file(relativePath: {
@@ -72,11 +72,12 @@ const Layout = ({ children, location, index }) => {
       <Wrapper>
         <Header index={index} />
         <Main>
-          <Container index={index} style={index && 
+          <Container index={index} style={index ? 
           ({
             opacity,
-            transform: y.interpolate(y => `translate3d(0, ${y}px, 0)`)
-          })}>
+            transform: y.interpolate(y => `translate3d(0, ${y}px, 0)`),
+            ...style
+          }) : style}>
           {children}
           </Container>
         </Main>
