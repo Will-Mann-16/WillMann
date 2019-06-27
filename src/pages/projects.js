@@ -47,9 +47,8 @@ const Language = styled.span`
 `;
 
 const ProjectsPage = ({data}) => (
-  <Layout>
+  <Layout style={{width: '100%'}}>
     <SEO title="Projects" keywords={['web', 'development', 'react', 'full', 'stack']} />
-  <div style={{width: '100%'}}>
     <h1>{data.markdownRemark.frontmatter.title}</h1>
     <div dangerouslySetInnerHTML={{__html: data.markdownRemark.html}}/>
     <ProjectGroup>
@@ -63,7 +62,6 @@ const ProjectsPage = ({data}) => (
     </div>
     </Project>)}
     </ProjectGroup>
-</div>
 </Layout>
 )
 
